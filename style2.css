@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(38, 19, 92, 0.85) 0%,
+        rgba(255, 119, 169, 0.6) 100%
+    );
+    z-index: 2;
+}
+
+.header-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.header-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+.production-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.production-info span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-nav {
+    margin-top: 2rem;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:hover {
+    background: rgba(255, 204, 0, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(38, 19, 92, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 1rem;
+    display: none;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+}
+
+.dropdown-menu .nav-link:hover {
+    background: rgba(255, 119, 169, 0.8);
+    transform: translateX(5px);
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.synopsis {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.synopsis::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #26135c, #ff77a9);
+}
+
+.quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+    color: #26135c;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9ff, #fff0f7);
+    border-radius: 12px;
+    border-left: 4px solid #ff77a9;
+    position: relative;
+}
+
+.quote::before {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    color: #ff77a9;
+    opacity: 0.3;
+}
+
+.synopsis p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.synopsis em {
+    color: #26135c;
+    font-weight: 600;
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: linear-gradient(135deg, #26135c, #ff77a9);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-box::before {
+    display: none;
+}
+
+.highlight-box h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.premiere-date {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-box p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.trailer-section {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.trailer-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #26135c, #ff77a9);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(38, 19, 92, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.trailer-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.trailer-button:hover::before {
+    left: 100%;
+}
+
+.trailer-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(38, 19, 92, 0.4);
+}
+
+.footer {
+    background: linear-gradient(135deg, #26135c, #ff77a9);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+/* Actor Card*/
+.actor-profile {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.actor-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #26135c, #ff77a9, #26135c);
+}
+
+.actor-header {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.actor-photo {
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(38, 19, 92, 0.15);
+    flex-shrink: 0;
+}
+
+.actor-intro {
+    flex: 1;
+    min-width: 0;
+    padding-top: 1rem;
+}
+
+.actor-name {
+    font-size: 2.5rem;
+    color: #26135c;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.actor-role-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #26135c, #ff77a9);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.actor-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+    padding: 1.5rem;
+    background: #f8f9ff;
+    border-radius: 12px;
+    border-left: 4px solid #ff77a9;
+}
+
+.actor-description em {
+    color: #26135c;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.biography-section {
+    padding-top: 3rem;
+    border-top: 2px solid #f0f0f0;
+    margin-top: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #26135c;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.biography-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        height: 70vh;
+        min-height: 500px;
+    }
+    .production-info {
+        gap: 1rem;
+    }
+    .nav-list {
+        gap: 1rem;
+    }
+    .synopsis {
+        padding: 2rem;
+    }
+    .quote {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    .highlight-box {
+        padding: 2rem;
+    }
+    .premiere-date {
+        font-size: 2rem;
+    }
+    .main-content {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+    .actor-profile {
+        padding: 2rem;
+    }
+    .actor-header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    .actor-photo {
+        width: 280px;
+        height: 350px;
+        margin: 0 auto;
+    }
+    .actor-name {
+        font-size: 2rem;
+    }
+    .actor-description {
+        font-size: 1.1rem;
+        padding: 1.2rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 0 1rem;
+    }
+    .synopsis {
+        padding: 1.5rem;
+    }
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        margin-top: 0.5rem;
+        display: none;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .actor-profile {
+        padding: 1.5rem;
+    }
+    .actor-photo {
+        width: 100%;
+        max-width: 280px;
+        height: 320px;
+    }
+    .actor-name {
+        font-size: 1.8rem;
+    }
+    .actor-role-badge {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
